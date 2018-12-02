@@ -1,0 +1,104 @@
+:root {
+    --buds-neptune: #729FA1;
+    --buds-yolk: #FFCC00;
+    --grey-chateau: #95989A;
+}
+
+.bg-buds-neptune {
+    background-color: var(--buds-neptune);
+}
+.buds-neptune {
+    color: var(--buds-neptune);
+}
+.bg-buds-yolk {
+    background-color: var(--buds-yolk);
+}
+.b--buds-neptune {
+    border-color: var(--buds-neptune);
+}
+.b--buds-yolk {
+    border-color: var(--buds-yolk);
+}
+.b--grey-chateau {
+    border-color: var(--grey-chateau);
+}
+
+.roboto {
+    font-family: Roboto, 'helvetica neue', helvetica, sans-serif;
+}
+
+.open-sans {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.cust-shadow-1 {
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+}
+
+.cust-shadow-up-1 {
+    box-shadow: 0 -3px 6px 0 rgba(0,0,0,0.16);
+}
+
+.link:focus {
+    outline: 0;
+}
+.transition-1 {
+    transition: all 300ms ease-in-out 100ms;
+}
+
+.ml--1 {
+    margin-left: -0.25rem
+}
+.ml--2 {
+    margin-left: -0.5rem
+}
+.ml--3 {
+    margin-left: -1rem
+}
+.ml--4 {
+    margin-left: -2rem
+}
+
+.bw01 {
+    border-width: 0.0125rem !important;
+}
+
+/* Custom width scale - start */
+.w-95 {
+    width: 95%;
+}
+/* Custom width scale - end */
+
+/* Custom max height scale - start */
+.maxh1 {
+    max-height: 1rem;
+}
+.maxh2 {
+    max-height: 2rem;
+}
+.maxh3 {
+    max-height: 4rem;
+}
+.maxh4 {
+    max-height: 8rem;
+}
+.maxh5 {
+    max-height: 16rem;
+}
+.maxh6 {
+    max-height: 32rem;
+}
+/* Custom max height scale - end */
+
+.placeholder-white::-webkit-input-placeholder {
+    color: white;
+}
+
+.vh-100 {
+    height: 100vh;
+    height: calc(var(--vh, 1vh) * 100) !important;
+}
+
+.z-99999 {
+    z-index: 99999;
+}
