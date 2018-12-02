@@ -53,6 +53,15 @@ class App extends Component {
     console.log(thisid);
     this.setState({userInputToken: ""})
   }
+
+  handleSubmit(e){
+    event.preventDefault();
+    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    console.log(text);
+    //TODO: check the user against the database and then enter next view
+
+
+  }
  
   render() {
     const { userInputToken, example } = this.state
@@ -64,21 +73,15 @@ class App extends Component {
           <div className='w-100'>
           <Card className='w-40 center'>
             <CardContent>
-          <TextField
-                required
-                id='userInputToken'
-                label='Your User Token'
-                onChange={evt => this.setState({userInputToken: evt.target.value})}
+          <form onSubmit={this.handleSubmit.bind(this)}>
+            <input 
+              type="text"
+              ref="textInput"
+              placeholder="Type Your User Token"
               />
+            <input type ="submit" value="check my data" />
+          </form>
               </CardContent>
-              <CardActions>
-              <div className='flex justify-end w-100'>
-                <Button onClick={this.changeState.bind(this)} variant='contained' color='inherit'>
-                  SIGN IN
-                </Button>
-                </div>
-                <button onClick={this.handleClick.bind(this)}>Add</button>
-              </CardActions>
               </Card>
            </div>
         </header>
