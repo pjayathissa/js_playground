@@ -23,6 +23,7 @@ import { UserTokenCollection } from '../api/usertokens.js'
 // This results in an error
 // ASK Noar why this runs twice and why I need an external script
 import UserToken from './usertokens.js'
+import UserMatch from './usermatch.js'
 
  
 // App component - represents the whole app
@@ -36,32 +37,27 @@ class App extends Component {
   };
 
   renderUsers() {
-    console.log(this.props)
     return this.props.usertokens.map((user) => (
       <UserToken key={user._id} usertoken={user} />
       ));
   }
  
 
-  changeState(){
-    var example = this.state.example
-    this.setState({example: !example})
-}
 
-  handleClick(){
-    var thisid = this.state.userInputToken
-    console.log(thisid);
-    this.setState({userInputToken: ""})
-  }
-
-  handleSubmit(e){
+  handleSubmit(event){
     event.preventDefault();
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-    console.log(text);
+    console.log("handle submit was clicked");
+    var UserMatchObject= new UserMatch(this.props)
+
+    //TODO: If true, go to next view
+    UserMatchObject.userInDatabase(text);
+
+  }
     //TODO: check the user against the database and then enter next view
 
 
-  }
+
  
   render() {
     const { userInputToken, example } = this.state
