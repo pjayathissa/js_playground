@@ -8,7 +8,7 @@ import 'tachyons'
 
 //Import Other Views/Components
 import HomeScreen from './homescreen/homescreen.js';
-
+import DataScreen from './datascreen/datascreen.js';
  
 // App component - represents the whole app
 class App extends Component {
@@ -20,6 +20,7 @@ class App extends Component {
             <div className='open-sans vh-100 flex flex-column'>
               <Switch>
                 <Route exact path='/' component={HomeScreen} />
+                <Route exact path='/:userdata' component={DataScreen} />
                 <Redirect to='/' />
               </Switch>
             </div>

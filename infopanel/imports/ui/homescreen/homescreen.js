@@ -45,12 +45,17 @@ class HomeScreen extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim().toLowerCase();
     console.log("handle submit was clicked");
     var UserMatchObject= new UserMatch(this.props)
 
     //TODO: If true, go to next view
-    UserMatchObject.userInDatabase(text);
+    if (UserMatchObject.userInDatabase(text)){
+      this.props.history.push({
+        pathname: `/${text}`,
+        state: {usertoken: 'text'}
+      });
+    };
 
   }
     //TODO: check the user against the database and then enter next view
@@ -66,15 +71,15 @@ class HomeScreen extends Component {
           <h1>Welcome</h1>
           <h3>Type your username below </h3>
           <div className='w-100'>
-          <Card className='w-40 center'>
+          <Card className='mw5 mw7-ns center'>
             <CardContent>
           <form onSubmit={this.handleSubmit.bind(this)}>
-            <input 
+            <input className="pa2 input-reset ba bg-transparent w-70 "
               type="text"
               ref="textInput"
               placeholder="Type Your User Token"
               />
-            <input type ="submit" value="check my data" />
+            <input className = "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type ="submit" value="check my data" />
           </form>
               </CardContent>
               </Card>
@@ -82,6 +87,7 @@ class HomeScreen extends Component {
         </header>
  
         <h4>
+          List of registered users - for debugging
           {this.renderUsers()}
         </h4>
       </div>
