@@ -102,3 +102,13 @@
 .z-99999 {
     z-index: 99999;
 }
+
+/* d3 styles */
+
+.chart div {
+  background-color: var(--buds-neptune);
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
