@@ -7,6 +7,7 @@ import { Meteor } from 'meteor/react-meteor-data';
 import 'tachyons'
 
 import BarChart from './barchart.js';
+import BulletChart from './bulletchart.js';
 
 class DataScreen extends Component {
   constructor(props) {
@@ -25,15 +26,15 @@ class DataScreen extends Component {
         <header>
         </header>
 
-        <div className="mw5 mw7-ns wt-50 fl bg-near-white pa3 ph5-ns">
+        <div className="mw5 mw7-ns wt-50 fl white pa3 ph5-ns">
         	<div className="row">
-        		<BarChart />
+        		<BulletChart />
         		<h3></h3>
         	</div>
         </div>
-        <div className='mw5 mw7-ns wt-50 bg-light-gray fl pa3 ph5-ns'>
+        <div className='mw5 mw7-ns wt-50  fl pa3 ph5-ns'>
         	<div>
-        		<h3>testfffffffffffffffffffffffffffffffffff </h3>
+        		<p>This is some text explaining the data shown on the left</p>
         	</div>
         </div>
      </div>
