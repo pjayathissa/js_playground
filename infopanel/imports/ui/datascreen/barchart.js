@@ -32,7 +32,6 @@ class BarChart extends Component {
                   .rangeRoundBands([0, this.props.height], 0.05);
 
 
-
       d3.select(el)
             .append("svg")
             .attr("width", this.props.width)
