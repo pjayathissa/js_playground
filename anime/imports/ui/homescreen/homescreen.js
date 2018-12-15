@@ -9,46 +9,7 @@ import { Transition, TransitionGroup} from 'react-transition-group';
 import 'tachyons';
 import anime from 'animejs';
 
-
-class ListItem extends Component {
-	constructor() {
-	    super();
-
-	    this.liRef = React.createRef();
-	}
-
-	componentDidUpdate(){
-		this.animeRef = anime ({
-			targets: this.liRef.current,
-			translateX: () => {
-				if (this.props.status == "entering") {
-					return ['-100%', '0%'];
-				}
-				else if (this.props.status == "exiting") {
-					return ['0%', '100%'];
-				}
-			},
-			elasticity: () => {
-				if( this.props.status == 'entering'){
-					return 300;
-				}
-				else if (this.props.status == 'exiting'){
-					return 0;
-				}
-			},
-			duration: 500
-		});
-	}
-
-	render(){
-		return(
-			<li className = "list-item" ref ={this.liRef}>
-				Hey I am item number {this.props.num}
-			</li>
-			);
-	}
-
-}
+import ProjectCard from './projectcard.js'
 
 
 class HomeScreen extends Component {
@@ -57,61 +18,120 @@ class HomeScreen extends Component {
 
 
 	    this.state = {
-	    	data: [1,2,3]
+	    	data: [1],
+	    	in: true,
+	    	firstName : "P",
+	    	secondName : "J",
+	    	lowercaseOpacity: 'o-0'
 	    };
+
+	    
+
+	    
+
 	 }
 
-	 add() {
-	 	this.setState({
-	 		...this.state,
-	 		data: this.state.data.concat([this.state.data.length +1])
+	 componentDidMount(){
+
+	 	var startP = anime({
+			  targets: '#Pnode .Pel',
+			  translateX: [
+			    {
+			      value: 250,
+			      duration: 550,
+			    },
+			    {
+			      value: 0,
+			      duration: 1000,
+			    }
+			  ],
+			});
+
+	 	var scrollB = anime({
+	 		targets: '#scroll',
+	 		translateY: [
+			    {
+			      value: 25,
+			      duration: 1050,
+			    },
+			    {
+			      value: 100,
+			      duration: 1000,
+			      delay: 2500,
+			    }
+			  ],
+			  rotate: -45,
 	 	});
+
+
+	 	setTimeout(()=> {
+
+	 	var lowerletters = anime({
+			  targets: '#Pnode .rel',
+			  opacity: 1,
+			  easing: 'easeInOutQuad'
+			});
+	    	
+	    }, 1000);
+
+	    setTimeout(()=> {
+
+	 	var scrollB = anime({
+			  targets: '#scrolldiv',
+			  opacity: 1,
+			  easing: 'easeInOutQuad'
+			});
+	    	
+	    }, 2500);
+
+
 	 }
 
-	 remove() {
-	 	this.setState({
-	 		...this.state,
-	 		data: this.state.data.slice(0,-1)
-	 	});
-	 }
 
 
     render() {
     	//tranistion component takes two values, in (which if true will display entering and entered)
     	// in == false will render exiting and exited
     	// duration is the time between entering - entered, and exiting-exited
+    	console.log(this.state);
 	    return (
+		
+	    	<div>
+	    	<div className = "vh-100  dt w-100 bg-black">
 
-	    	<div className = "app-container">
-	    		<div className="buttons">
-	    			<button onClick = {this.add.bind(this)}> Add One </button>
-	    			<button onClick = {this.remove.bind(this)}> Remove </button>
 
-	    		</div>
-	    		<TransitionGroup
-	    		component = "ul"
-	    		className = "list"
-	    		>
-	    			{
-	    				this.state.data.map(num => (
-	    					<Transition
-	    					key={num}
-	    					timeout = {500}
-	    					// we don't want annimations to run on start
-	    					//appear = {true}
-	    					mountOnEnter
-	    					unmountOnExit
-	    					>
-	    						{
-	    							(status) => {
-	    								return <ListItem status = {status} num = {num} />;
-	    							}
-	    						}
-	    					</Transition>
+	    		<div className = "dtc v-mid tc white ph3 ph4-l">
 
-	    					))
-	    			}
-	    		</TransitionGroup>
+
+	    			<div id="Pnode" className="dib">
+
+						<h1 className="dib f-subheadline-l Pel"> P </h1>
+						<h1 className={ 'dib f-subheadline-l rel pr3 ' + this.state.lowercaseOpacity }> rageeth </h1>
+						<h1 className="dib f-subheadline-l Jel"> J</h1>
+						<h1 className={ 'dib f-subheadline-l rel ' + this.state.lowercaseOpacity }> ayathissa</h1>
+
+					</div>
+
+					<div id = "scrolldiv" className= "white bottom-0 pa5 o-0">
+						<h3> Scroll </h3>
+						<div id = "scroll" className= "scrollbutton pa1 white">
+		    				<span></span>
+						</div>
+					</div>
+					
+
+				</div>
+				
+		    	
+
+	    	
+	    	</div>
+
+	    	<div className = "center bg-white pa3 ph5-ns">
+	    		<ProjectCard />
+	    		<ProjectCard />
+	    	</div>
+
 	    	</div>
     );
   }

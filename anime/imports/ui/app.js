@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import 'tachyons'
 
 import HomeScreen from './homescreen/homescreen.js'
+import Demo from './homescreen/demo.js'
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
             <div className='open-sans vh-100 flex flex-column'>
               <Switch>
                 <Route exact path='/' component={HomeScreen} />
+                <Route exact path='/demo' component={Demo} />
                 <Redirect to='/' />
               </Switch>
             </div>
